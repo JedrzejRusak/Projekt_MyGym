@@ -1,0 +1,48 @@
+﻿@model Projekt.Models.Lesson
+
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h1>Dodaj zajęcia</h1>
+
+<h4>Zajęcia</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nazwa zajęć</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTimeStarted" class="control-label">Termin rozpoczęcia</label>
+                <input asp-for="DateTimeStarted" class="form-control" />
+                <span asp-validation-for="DateTimeStarted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTimeEnded" class="control-label">Termin zakończenia</label>
+                <input asp-for="DateTimeEnded" class="form-control" />
+                <span asp-validation-for="DateTimeEnded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountOfSpace" class="control-label">Liczba miejsc na zajęcia</label>
+                <input asp-for="AmountOfSpace" class="form-control" />
+                <span asp-validation-for="AmountOfSpace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Wróć do harmonogramu</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

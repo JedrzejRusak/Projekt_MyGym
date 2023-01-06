@@ -1,0 +1,35 @@
+﻿@model Projekt.Models.MyLessons
+
+@{
+    ViewData["Title"] = "Szczegóły";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <h4>Moje zajęcia</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Zajęcia
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lessons.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Rozpoczęcie
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lessons.DateTimeStarted)
+        </dd>
+        <dt class="col-sm-2">
+            Zakończenie
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lessons.DateTimeEnded)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Wróć do swoich zajęć</a>
+</div>

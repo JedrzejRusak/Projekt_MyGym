@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Projekt.Models.MyLessons>
+
+@{
+    ViewData["Title"] = "Moje zajęcia";
+}
+
+<h1>Moje zajęcia</h1>
+
+<p>
+    <a asp-action="Create">Zapisz się na zajęcia</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Zajęcia
+            </th>
+            <th>
+                Rozpoczęcie
+            </th>
+            <th>
+                Zakończenie
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lessons.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lessons.DateTimeStarted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lessons.DateTimeEnded)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

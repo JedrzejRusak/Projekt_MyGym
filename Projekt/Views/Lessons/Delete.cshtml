@@ -1,0 +1,51 @@
+﻿@model Projekt.Models.Lesson
+
+@{
+    ViewData["Title"] = "Usuń";
+}
+
+<h1>Delete</h1>
+
+<h3>Czy na pewno usunąć zajęcia?</h3>
+<div>
+    <h4>Zajęcia</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nazwa zajęć
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Rozpoczęcie zajęć
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateTimeStarted)
+        </dd>
+        <dt class = "col-sm-2">
+            Zakończenie zajęć
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateTimeEnded)
+        </dd>
+        <dt class = "col-sm-2">
+            Liczba wszystkich miejsc
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AmountOfSpace)
+        </dd>
+        <dt class = "col-sm-2">
+            Liczba zajętych miejsc
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AmountOfOccupiedSpace)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Wróć do harmonogramu</a>
+    </form>
+</div>

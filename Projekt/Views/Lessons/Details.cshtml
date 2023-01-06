@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Projekt.Models.MyLessons>
+
+@{
+    ViewData["Title"] = "Szczegóły";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <h4>Zajęcia</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nazwa zajęć
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.Lesson.Name
+        </dd>
+        <dt class = "col-sm-2">
+            Początek zajęć
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.Lesson.DateTimeStarted
+        </dd>
+        <dt class = "col-sm-2">
+            Koniec zajęć
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.Lesson.DateTimeEnded
+        </dd>
+        <dt class = "col-sm-2">
+            Wszystkie miejsca
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.Lesson.AmountOfSpace
+        </dd>
+        <dt class = "col-sm-2">
+            Zajęte miejsca
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.Lesson.AmountOfOccupiedSpace
+        </dd>
+    </dl>
+</div>
+@if(Model.Any()){           //wyświetlenie użytkowników zapisanych na zajęcia
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.Email)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Email)
+                    </td>
+                    <td>
+                        <a asp-controller="MyLessons" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+<div>
+    <a asp-action="Index">Wróć do harmonogramu</a>
+</div>

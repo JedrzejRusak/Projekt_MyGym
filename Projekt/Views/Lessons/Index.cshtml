@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Projekt.Models.Lesson>
+
+@{
+    ViewData["Title"] = "Harmonogram zajęć";
+}
+
+<h1>Harmonogram zajęć</h1>
+@if(User.IsInRole("Administrator")){
+    <p>
+        <a asp-action="Create">Dodaj nowe zajęcia</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Zajęcia
+            </th>
+            <th>
+                Rozpoczęcie zajęć 
+            </th>
+            <th>
+                Zakończenie zajęć
+            </th>
+            <th>
+                Ilość miejsc
+            </th>
+            <th>
+                Zajęte miejsca
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeStarted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeEnded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountOfSpace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountOfOccupiedSpace)
+            </td>
+            @if (User.IsInRole("Administrator")){
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                </td>
+            }     
+        </tr>
+}
+    </tbody>
+</table>
